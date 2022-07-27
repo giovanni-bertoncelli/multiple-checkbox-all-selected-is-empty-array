@@ -1,0 +1,42 @@
+<div class="container m-3">
+  <ul class="list-group list-group-light list-group-flush">
+    <li class="list-group-item p-0 bg-transparent text-start">
+      <div class="form-check">
+        <input
+          mdbCheckbox
+          class="form-check-input"
+          type="checkbox"
+          [ngModel]="attributesAllSelected"
+          id="allattributes"
+          (ngModelChange)="toggleAllAttributes($event, attributes)"
+        />
+        <label
+          class="form-check-label ps-2 h-100 w-100 py-3"
+          for="allattributes"
+        >
+          Select all
+        </label>
+      </div>
+    </li>
+    <li
+      class="list-group-item p-0 bg-transparent text-start"
+      *ngFor="let attr of attributes"
+    >
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [checked]="isAttributeSelected(attr.id)"
+          (click)="filterAttribute(attr.id, $event, attributes)"
+          id="{{ attr.id }}"
+        />
+        <label
+          class="form-check-label ps-2 h-100 w-100 py-3"
+          for="{{ attr.id }}"
+        >
+          {{ attr.name }}
+        </label>
+      </div>
+    </li>
+  </ul>
+</div>
